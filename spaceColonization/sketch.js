@@ -4,7 +4,7 @@ var negaiveFigure;
 var utils;
 var nodes = [];
 var drawThings;
-var max_depth;
+var maxDepth;
 var gui;
 var nodesVisible = false;
 var negativeFifureVisible = true;
@@ -44,13 +44,18 @@ var negativePosX = 1830;
 var negativePosXMax = 1830;
 var negativePosXMin = 50;
 
+var length = 5;
+
+var lengthMax = 30;
+var lengthMin = 5;
+
 function setup() {
   createCanvas(1880, 920);
 
   setSketch();
 
   gui = createGui('p5.gui');
-  gui.addGlobals('maxDist', 'minDist', 'nodeAmount', 'positivePosY',  'positivePosX', 'negativePosY', 'negativePosX', 'nodesVisible', 'negativeFifureVisible');
+  gui.addGlobals('maxDist', 'minDist', 'nodeAmount', 'positivePosY',  'positivePosX', 'negativePosY', 'negativePosX', 'length', 'nodesVisible', 'negativeFifureVisible');
 
   gui.addButton("Start/pause", function() {
     begin();
@@ -63,6 +68,7 @@ function setup() {
 }
 
 function draw() {
+
   if (drawThings) {
 
   background(0);
@@ -83,9 +89,9 @@ function begin() {
 
 function setSketch() {
 
-  frameRate(20);
+  frameRate(60);
 
-  max_depth = 0;
+  maxDepth = 0;
 
   drawThings = true;
 

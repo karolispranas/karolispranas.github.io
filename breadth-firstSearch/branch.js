@@ -21,7 +21,7 @@ function Branch(parent, pos, dir) {
   
     this.show = function() {
       if (parent != null) {
-        stroke(150, 255, 0);
+        stroke(176,224,230);
         strokeWeight(4);
         line(this.pos.x, this.pos.y, this.parent.pos.x, this.parent.pos.y);
       }

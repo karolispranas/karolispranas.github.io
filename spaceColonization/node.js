@@ -1,4 +1,3 @@
- // Node class
  function Node() {
 	this.pos = createVector( random(100, width-100),random(50, height-50));
 	this.positiveReached = false;

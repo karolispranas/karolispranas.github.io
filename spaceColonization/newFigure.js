@@ -1,7 +1,6 @@
-// Figure class main calculations
 function NewFigure(nodes, pos) {
 	this.branches = [];
-	this.validNodes = nodes;
+	this.nodes = nodes;
 
     // Create an ending point
 	this.pos = pos;
@@ -12,10 +11,9 @@ function NewFigure(nodes, pos) {
 	var endingBranch = end;
 	var found = false;
 
-	// Keep the begining and ending roots groving until there is a node in between max and min distance
 	while (!found) {
-	  for (var i = 0; i < this.validNodes.length; i++) {
-		var d = p5.Vector.dist(endingBranch.pos, this.validNodes[i].pos);
+	  for (var i = 0; i < this.nodes.length; i++) {
+		var d = p5.Vector.dist(endingBranch.pos, this.nodes[i].pos);
 		if (d < maxDist) {
 		  found = true;
 		}
@@ -29,11 +27,10 @@ function NewFigure(nodes, pos) {
   
 
 	this.grow = function() {
-		// Go througth all of the nodes and find the closest branch to the node
-	  for (var i = 0; i < this.validNodes.length; i++) {
-		if (!this.validNodes[i].negativeReached) {
+	  for (var i = 0; i < this.nodes.length; i++) {
+		if (!this.nodes[i].negativeReached) {
 		
-			var node = this.validNodes[i];
+			var node = this.nodes[i];
 			var closestBranch = null;
 			var record = maxDist;
 			for (var j = 0; j < this.branches.length; j++) {
@@ -53,7 +50,6 @@ function NewFigure(nodes, pos) {
 				
 			}
 
-			// if we find the branch that it in between the min and max distance and is closest to the node, the branch is gonna get pulled towards it
 			if (closestBranch != null) {
 				var newDir = p5.Vector.sub(node.pos, closestBranch.pos);
 				newDir.normalize();
@@ -64,14 +60,13 @@ function NewFigure(nodes, pos) {
 	  }
   
 
-    for (var i = 0; i < this.validNodes.length; i++) {
-        var node = this.validNodes[i];
+    for (var i = 0; i < this.nodes.length; i++) {
+        var node = this.nodes[i];
         if (node.positiveReached == true && node.negativeReached == true) {
             begin();
         }
     }
   
-	  // Go througth all the branches and average it's direction based on how many nodes are puling it, create a new branch towards the pulling node
 	  for (var i = this.branches.length - 1; i >= 0; i--) {
 		var branch = this.branches[i];
 		if (branch.count > 0) {
@@ -85,8 +80,8 @@ function NewFigure(nodes, pos) {
 
   
 	this.show = function() {
-	  for (var i = 0; i < this.validNodes.length; i++) {
-		this.validNodes[i].show();
+	  for (var i = 0; i < this.nodes.length; i++) {
+		this.nodes[i].show();
 	  }
   
 	  for (var i = 0; i < this.branches.length; i++) {

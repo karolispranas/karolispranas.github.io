@@ -11,7 +11,9 @@ function Node(pos) {
 	this.connected;
 	
 	this.show = function() {
-		if (this.connected == true) {
+		if(!auxilaryVisible){
+			fill(0,0,0)
+		}else if (this.connected == true) {
 			fill(0,0,255);
 
 		}else if(this.positive == true){
@@ -21,6 +23,6 @@ function Node(pos) {
 			fill(255,0,0);
 		}
 		noStroke();
-		ellipse(this.pos.x, this.pos.y, 10, 10);
+		ellipse(this.pos.x, this.pos.y, 4, 4);
 	}
 }
