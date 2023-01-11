@@ -1,4 +1,4 @@
-function NewFigure(nodes, pos) {
+function NegativeFigure(nodes, pos) {
 	this.branches = [];
 	this.nodes = nodes;
 

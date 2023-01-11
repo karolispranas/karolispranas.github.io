@@ -103,5 +103,5 @@ function setSketch() {
   var negPos = createVector( negativePosX, negativePosY);
 
   positiveFigure = new Figure(nodes, pos);
-  negaiveFigure = new NewFigure(nodes, negPos);
+  negaiveFigure = new NegativeFigure(nodes, negPos);
 }
